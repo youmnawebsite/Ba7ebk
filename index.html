@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كل يوم بحبك أكتر</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            text-align: center;
+            padding: 50px;
+        }
+
+        .container {
+            background-color: #ffffff;
+            border-radius: 10px;
+            padding: 30px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        h1 {
+            font-size: 36px;
+            color: #ff6f61;
+        }
+
+        p {
+            font-size: 24px;
+            color: #333333;
+            margin-top: 20px;
+        }
+
+        .days-count {
+            font-size: 48px;
+            color: #ff6f61;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+
+        .message {
+            font-size: 20px;
+            color: #555555;
+            margin-top: 30px;
+        }
+
+        .button {
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            font-size: 18px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 30px;
+            transition: background-color 0.3s;
+        }
+
+        .button:hover {
+            background-color: #ff4a39;
+        }
+
+        .future-days {
+            font-size: 18px;
+            color: #ff6f61;
+            margin-top: 40px;
+        }
+
+        .countdown {
+            font-size: 36px;
+            color: #4CAF50;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>كل يوم بحبك أكتر</h1>
+        <p>من <span id="start-date"></span>... كل يوم بيعدي بحبك أكتر يا احلى يمنى في الدنيا</p>
+        <p class="days-count" id="days-count">0</p>
+        <p class="message" id="message">لحظاتنا الحلوه لسه مبدأتش</p>
+        
+        <p class="future-days">
+            <span id="future-message"></span>
+        </p>
+
+        <p class="countdown" id="countdown"></p>
+
+        <button class="button" onclick="showMessage()">بصي هنا</button>
+    </div>
+
+    <script>
+        // تعيين تاريخ بداية العلاقة (تاريخ معين باليوم والشهر والسنة)
+        const startDate = new Date("2024-11-10");  // قم بتغيير التاريخ هنا ليكون تاريخ بداية علاقتك
+        const today = new Date();
+
+        // حساب عدد الأيام
+        function calculateDays() {
+            const diffTime = today - startDate;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays;
+        }
+
+        // حساب الأيام القادمة (مثال: بعد 365 يوم)
+        function calculateFutureDays() {
+            const futureDate = new Date(startDate);
+            futureDate.setFullYear(futureDate.getFullYear() + 1);  // إضافة سنة واحدة
+            const diffTime = futureDate - today;
+            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
+            return diffDays;
+        }
+
+        // عرض عدد الأيام
+        document.getElementById("days-count").textContent = calculateDays();
+
+        // عرض تاريخ البداية
+        document.getElementById("start-date").textContent = startDate.toLocaleDateString();
+
+        // عرض عدد الأيام القادمة (توقع المستقبل)
+        document.getElementById("future-message").textContent = `هيتبقى لنا ${calculateFutureDays()} يوم جديد سوا.`;
+
+        // تحديث العد التنازلي للأيام القادمة
+        setInterval(() => {
+            document.getElementById("countdown").textContent = `العد التنازلي: ${calculateFutureDays()} يوم جديد`;
+        }, 86400000); // كل يوم يحدث العد التنازلي
+
+        // تغيير الرسالة عند الضغط على الزر
+        function showMessage() {
+            const messages = [
+                `اليوم هو اليوم ال ${calculateDays()} من بداية حبنا وكل يوم بيعدي بحبك أكتر`,
+                "أنا مش عارف أعد الأيام اللي فاتت قد إيه لأن كل لحظة معاكِ هي جديدة وأجمل.",
+                "أنتِ أهم حاجة في حياتي وكل لحظة معاكِ هي لحظة رائعة",
+                "كل يوم بحبك أكتر واللحظات دي هتكون دايمًا في قلبي!"
+            ];
+
+            const randomMessage = messages[Math.floor(Math.random() * messages.length)];
+            document.getElementById("message").textContent = randomMessage;
+        }
+    </script>
+
+</body>
+</html>
