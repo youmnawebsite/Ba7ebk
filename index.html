@@ -1,83 +1,165 @@
 <!DOCTYPE html>
-<html lang="ar">
+<html lang="ar" dir="rtl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>كل يوم بحبك أكتر</title>
+    <title>كل يوم بحبك اكتر</title>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Tajawal:wght@400;700&display=swap');
+
+        :root {
+            --primary-color: #ff6f61;
+            --secondary-color: #4CAF50;
+            --background-color: #f8f9fa;
+            --text-color: #333333;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
-            background-color: #f8f9fa;
+            font-family: 'Tajawal', Arial, sans-serif;
+            background: linear-gradient(135deg, #fce4ec, #e8eaf6);
             text-align: center;
-            padding: 50px;
+            padding: 20px;
+            margin: 0;
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
         }
 
         .container {
-            background-color: #ffffff;
-            border-radius: 10px;
-            padding: 30px;
-            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+            background-color: rgba(255, 255, 255, 0.9);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            max-width: 600px;
+            width: 90%;
+            transition: transform 0.3s ease;
+        }
+
+        .container:hover {
+            transform: translateY(-5px);
         }
 
         h1 {
-            font-size: 36px;
-            color: #ff6f61;
+            font-size: 2.5rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
         }
 
         p {
-            font-size: 24px;
-            color: #333333;
+            font-size: 1.2rem;
+            color: var(--text-color);
             margin-top: 20px;
+            line-height: 1.6;
         }
 
         .days-count {
-            font-size: 48px;
-            color: #ff6f61;
+            font-size: 3.5rem;
+            color: var(--primary-color);
             font-weight: bold;
-            margin-top: 20px;
+            margin: 30px 0;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.1);
+            animation: pulse 1.5s infinite;
+        }
+
+        @keyframes pulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+            100% { transform: scale(1); }
         }
 
         .message {
-            font-size: 20px;
-            color: #555555;
-            margin-top: 30px;
+            font-size: 1.2rem;
+            color: var(--text-color);
+            margin: 30px 0;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            min-height: 80px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
 
         .button {
-            background-color: #ff6f61;
+            background-color: var(--primary-color);
             color: white;
             border: none;
             padding: 15px 30px;
-            font-size: 18px;
-            border-radius: 5px;
+            font-size: 1.2rem;
+            border-radius: 50px;
             cursor: pointer;
             margin-top: 30px;
-            transition: background-color 0.3s;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
         }
 
-        .button:hover {
+        .button:hover, .button:active {
             background-color: #ff4a39;
+            transform: translateY(-2px);
+            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
         }
 
         .future-days {
-            font-size: 18px;
-            color: #ff6f61;
+            font-size: 1.1rem;
+            color: var(--primary-color);
             margin-top: 40px;
         }
 
         .countdown {
-            font-size: 36px;
-            color: #4CAF50;
+            font-size: 1.8rem;
+            color: var(--secondary-color);
+            margin-top: 20px;
+            font-weight: bold;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                padding: 20px;
+                width: 95%;
+            }
+
+            h1 {
+                font-size: 2rem;
+            }
+
+            p, .message, .button {
+                font-size: 1rem;
+            }
+
+            .days-count {
+                font-size: 3rem;
+            }
+
+            .countdown {
+                font-size: 1.4rem;
+            }
+        }
+
+        @media (max-width: 400px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .days-count {
+                font-size: 2.5rem;
+            }
+
+            .countdown {
+                font-size: 1.2rem;
+            }
         }
     </style>
 </head>
 <body>
 
     <div class="container">
-        <h1>كل يوم بحبك أكتر</h1>
-        <p>من <span id="start-date"></span>... كل يوم بيعدي بحبك أكتر يا احلى يمنى في الدنيا</p>
+        <h1>كل يوم بحبك اكتر</h1>
+        <p>من يوم<span id="start-date"></span>  كل يوم بيعدي بحبك اكتر</p>
         <p class="days-count" id="days-count">0</p>
-        <p class="message" id="message">لحظاتنا الحلوه لسه مبدأتش</p>
+        <p class="message" id="message">ربنا يخليكي ليا يحبيبت قلبي ويجعلك من نصيبي❤️</p>
         
         <p class="future-days">
             <span id="future-message"></span>
@@ -85,56 +167,59 @@
 
         <p class="countdown" id="countdown"></p>
 
-        <button class="button" onclick="showMessage()">بصي هنا</button>
+        <button class="button" onclick="showMessage()">دوسي هنا يبت انتي</button>
     </div>
 
     <script>
-        // تعيين تاريخ بداية العلاقة (تاريخ معين باليوم والشهر والسنة)
-        const startDate = new Date("2024-11-10");  // قم بتغيير التاريخ هنا ليكون تاريخ بداية علاقتك
+        const startDate = new Date("2024-11-10");
         const today = new Date();
 
-        // حساب عدد الأيام
         function calculateDays() {
             const diffTime = today - startDate;
-            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            return diffDays;
+            return Math.floor(diffTime / (1000 * 60 * 60 * 24));
         }
 
-        // حساب الأيام القادمة (مثال: بعد 365 يوم)
         function calculateFutureDays() {
             const futureDate = new Date(startDate);
-            futureDate.setFullYear(futureDate.getFullYear() + 1);  // إضافة سنة واحدة
+            futureDate.setFullYear(futureDate.getFullYear() + 1);
             const diffTime = futureDate - today;
-            const diffDays = Math.floor(diffTime / (1000 * 60 * 60 * 24));
-            return diffDays;
+            return Math.floor(diffTime / (1000 * 60 * 60 * 24));
         }
 
-        // عرض عدد الأيام
-        document.getElementById("days-count").textContent = calculateDays();
+        function updateCounters() {
+            document.getElementById("days-count").textContent = calculateDays();
+            document.getElementById("start-date").textContent = startDate.toLocaleDateString('ar-EG');
+            document.getElementById("countdown").textContent = ` فاضل ${calculateFutureDays()} يوم على اول سنه سوا `;
+        }
 
-        // عرض تاريخ البداية
-        document.getElementById("start-date").textContent = startDate.toLocaleDateString();
-
-        // عرض عدد الأيام القادمة (توقع المستقبل)
-        document.getElementById("future-message").textContent = `هيتبقى لنا ${calculateFutureDays()} يوم جديد سوا.`;
-
-        // تحديث العد التنازلي للأيام القادمة
-        setInterval(() => {
-            document.getElementById("countdown").textContent = `العد التنازلي: ${calculateFutureDays()} يوم جديد`;
-        }, 86400000); // كل يوم يحدث العد التنازلي
-
-        // تغيير الرسالة عند الضغط على الزر
         function showMessage() {
             const messages = [
-                `اليوم هو اليوم ال ${calculateDays()} من بداية حبنا وكل يوم بيعدي بحبك أكتر`,
-                "أنا مش عارف أعد الأيام اللي فاتت قد إيه لأن كل لحظة معاكِ هي جديدة وأجمل.",
-                "أنتِ أهم حاجة في حياتي وكل لحظة معاكِ هي لحظة رائعة",
-                "كل يوم بحبك أكتر واللحظات دي هتكون دايمًا في قلبي!"
+                "انتي في حياتي كل حاجة",
+                "انا مش هعرف اعيش من غيرك",
+                "وجودك معايا مخلي حياتي حلوه بيكي",
+                "انا كل يوم بحبك اكتر من اليوم اللي قبله",
+                "وجودك معايا هو اللي مصبرني عالدنيا يا يومنتي",
+                "انتي مش بس حبيبتي انتِ كل حاجة في حياتي",
+                "لما بشوفك بحس ان الدنيا كلها وقفت عندنا",
+                "وجودك معايا هو احلى حلم عشته في حياتي",
+                "انا مش عايز اعيش من غيرك ولا يوم واحد",
+                "كلمة بحبك دي مش كفايه والله انا مشاعري اكبر من كده بكتير",
+                "السنه دي هتبقى حلوه بس عشان انتي معايا❤️",
+                "بحبك❤️"
             ];
 
+            const messageElement = document.getElementById("message");
             const randomMessage = messages[Math.floor(Math.random() * messages.length)];
-            document.getElementById("message").textContent = randomMessage;
+            messageElement.style.opacity = '0';
+            
+            setTimeout(() => {
+                messageElement.textContent = randomMessage;
+                messageElement.style.opacity = '1';
+            }, 300);
         }
+
+        updateCounters();
+        setInterval(updateCounters, 86400000);
     </script>
 
 </body>
